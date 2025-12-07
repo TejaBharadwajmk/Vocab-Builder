@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Word of the Day</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="word-of-day.html">Word of the Day</a>
+        <a href="recent-searches.html">Recent Searches</a>
+        <a href="paragraph.html">Paragraph Generator</a>
+    </nav>
+
+    <div class="wod-card">
+
+    <h1 class="wod-title"> Word of the Day </h1>
+
+    <h2 id="wodWord" class="wod-word"></h2>
+
+    <p id="wodMeaning" class="wod-meaning"></p>
+    <p id="wodExample" class="wod-example"></p>
+
+    
+</div>
+
+
+    <button id="wodBtn" onclick="loadWordOfDay()">🔄 New Word</button>
+</div>
+<script>
+async function loadWordOfDay() {
+    const randomWords = ["serene", "tenacity", "innovation", "vigilant", "elevate", "resilient", "emerge", "embrace"];
+    const word = randomWords[Math.floor(Math.random() * randomWords.length)];
+
+    let wordEl = document.getElementById("wodWord");
+    let meaningEl = document.getElementById("wodMeaning");
+    let exampleEl = document.getElementById("wodExample");
+
+    wordEl.textContent = "Loading...";
+    meaningEl.textContent = "";
+    exampleEl.textContent = "";
+
+    try {
+        let res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+        let data = await res.json();
+
+        let meaning = data[0].meanings[0].definitions[0].definition;
+        let example = data[0].meanings[0].definitions[0].example || "No example available.";
+
+        wordEl.textContent = word;
+        meaningEl.innerHTML = `<strong>Meaning:</strong> ${meaning}`;
+        exampleEl.innerHTML = `<strong>Example:</strong> ${example}`;
+
+    } catch {
+        wordEl.textContent = "Error";
+        meaningEl.textContent = "Unable to load word";
+    }
+}
+
+loadWordOfDay();
+</script>
+
+
+</body>
+</html>

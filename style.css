@@ -1,0 +1,408 @@
+/* ==========================
+   GLOBAL MODERN UI THEME
+   ========================== */
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    min-height: 100vh;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1.2s ease;
+}
+
+/* Smooth Fade */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* ==========================
+   NAVIGATION
+   ========================== */
+nav {
+    width: 100%;
+    padding: 18px 40px;
+    background: rgba(255, 255, 255, 0.40);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition: 0.35s;
+}
+
+nav a:hover {
+    background: #fff;
+    color: #4facfe;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* ==========================
+   GLASS CONTAINER
+   ========================== */
+.container {
+    width: 60%;
+    margin-top: 40px;
+    padding: 40px;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(12px);
+    border-radius: 22px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.45);
+    animation: slideUp 0.9s ease;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================
+   TITLE
+   ========================== */
+h1, .title {
+    text-align: center;
+    font-size: 38px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* ==========================
+   SEARCH BOX
+   ========================== */
+.search-box, .input-box {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.search-box input, .input-box input {
+    width: 65%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: none;
+    font-size: 17px;
+    outline: none;
+    background: rgba(255,255,255,0.7);
+    transition: 0.3s;
+}
+
+.search-box input:focus, .input-box input:focus {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+.search-box button, .input-box button {
+    padding: 14px 22px;
+    border-radius: 12px;
+    border: none;
+    background: #ff6f61;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.search-box button:hover, .input-box button:hover {
+    transform: scale(1.06);
+    background: #ff3b2f;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ==========================
+   RESULTS BOX (FIXED)
+   ========================== */
+
+
+#result h2 {
+    color: #4facfe;
+    font-weight: 700;
+}
+
+/* ==========================
+   TAGS / HIGHLIGHTS
+   ========================== */
+.word-tags span {
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 22px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.word-tags span:hover {
+    background: #ff6f61;
+    color: #fff;
+    transform: translateY(-4px) scale(1.1);
+}
+
+/* ==========================
+   HOME ICON GRID
+   ========================== */
+.icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+    width: 80%;
+}
+
+.icons div {
+    background: rgba(255,255,255,0.22);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.35s ease;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.icons div:hover {
+    transform: translateY(-6px) scale(1.05);
+    background: rgba(255,255,255,0.35);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.20);
+}
+
+.icons p {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================
+   FOOTER
+   ========================== */
+footer {
+    margin-top: 60px;
+    padding: 18px;
+    text-align: center;
+    width: 100%;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(12px);
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    border-top: 1px solid rgba(255,255,255,0.4);
+}
+
+/* ==========================
+   LOADER
+   ========================== */
+.loader {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.4);
+    border-top-color: #ff6f61;
+    animation: spin 0.8s linear infinite;
+    margin: 25px auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================
+   FLOATING BUTTON
+   ========================== */
+.fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #ff6f61;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.fab:hover {
+    transform: scale(1.12) rotate(10deg);
+    background: #ff3b2f;
+}
+/* ==========================
+   PARAGRAPH RESULT CARD
+   ========================== */
+#result-box {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(15px);
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    margin-top: 20px;
+    animation: fadeSlide 0.5s ease-out;
+}
+
+#result {
+    font-size: 18px;
+    color: #222;
+    line-height: 1.6;
+}
+
+#wordCount {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #4facfe;
+}
+
+.copy-btn {
+    background: #4facfe;
+    color: #fff;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.copy-btn:hover {
+    transform: scale(1.1);
+    background: #1dcaff;
+}
+
+/* Animation */
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.dict-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlide 0.5s forwards;
+}
+/* ==========================
+   WORD OF THE DAY PAGE
+   ========================== */
+
+.wod-card {
+    width: 65%;
+    padding: 40px;
+    margin-top: 40px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.25);
+    border: 2px solid rgba(255,255,255,0.4);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.18);
+    text-align: center;
+    animation: slideUp 1s ease;
+}
+
+.wod-title {
+    font-size: 40px;
+    color: #ffffff;        /* 🔥 White text */
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.35);  /* 🔥 Makes it glow slightly */
+}
+
+.wod-word {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1a1a1a; /* 🔥 Dark text */
+    text-shadow: 0 2px 5px rgba(255,255,255,0.3); /* soft glow */
+    margin-bottom: 15px;
+}
+
+
+.wod-meaning {
+    font-size: 20px;
+    color: #222;
+    background: rgba(255,255,255,0.8);
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.wod-example {
+    font-size: 18px;
+    margin-top: 10px;
+    opacity: 0.8;
+    background: rgba(255,255,255,0.7);
+    padding: 12px;
+    border-radius: 12px;
+}
+
+#wodBtn {
+    margin-top: 25px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #ff6f61, #ff3b2f);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 19px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+    transition: 0.3s;
+}
+
+#wodBtn:hover {
+    transform: scale(1.15);
+    background: linear-gradient(135deg, #ff3b2f, #ff0000);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+.audio-btn {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.5);
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.audio-btn:hover {
+    transform: scale(1.15);
+    background: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    border-color: #4facfe;
+}
+
+.audio-btn:active {
+    transform: scale(0.95);
+}

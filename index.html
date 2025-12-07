@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vocab Builder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="word-of-day.html">Word of the Day</a>
+        <a href="recent-searches.html">Recent Searches</a>
+        <a href="paragraph.html">Paragraph Generator</a>
+    </nav>
+
+    <div class="container">
+        <h1>Vocab Builder</h1>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Enter a word...">
+            <button onclick="searchWord()">Search</button>
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <div class="highlights">
+        <h2>Popular Words</h2>
+        <div class="word-tags">
+            <span>Serene</span>
+            <span>Elegant</span>
+            <span>Resilient</span>
+            <span>Empathy</span>
+            <span>Virtue</span>
+            <span>Aesthetic</span>
+        </div>
+    </div>
+
+    <div class="icons">
+        <div>
+            📚 <p>Learn New Words</p>
+        </div>
+        <div>
+            🔊 <p>Hear Pronunciation</p>
+        </div>
+        <div>
+            ✍️ <p>Use Paragraph Generator</p>
+        </div>
+    </div>
+
+    <p class="quote">“A better vocabulary gives you a better life.”</p>
+
+    <!-- Load your JS here -->
+    <script src="script.js"></script>
+
+</body>
+</html>

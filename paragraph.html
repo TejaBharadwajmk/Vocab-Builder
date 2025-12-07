@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paragraph Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="word-of-day.html">Word of the Day</a>
+    <a href="recent-searches.html">Recent Searches</a>
+    <a href="paragraph.html">Paragraph Generator</a>
+</nav>
+
+<div class="container">
+    <h1 class="title"> Paragraph Generator </h1>
+
+    <div class="input-box">
+        <input type="text" id="keywords" placeholder="Enter 3–5 words">
+        <button onclick="generateParagraph()">Generate</button>
+    </div>
+
+    <div id="loading" class="loading">Generating...</div>
+
+    <div id="result-box" class="result-box hidden">
+        <p id="result"></p>
+        <button class="copy-btn" onclick="copyText()">Copy</button>
+        <span id="wordCount"></span>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Recent Searches</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="word-of-day.html">Word of the Day</a>
+        <a href="recent-searches.html">Recent Searches</a>
+        <a href="paragraph.html">Paragraph Generator</a>
+    </nav>
+
+    <div class="container">
+        <h1>Recent Searches</h1>
+
+        <ul id="recentList" class="recent-list">
+
+        <button onclick="clearRecent()">Clear All</button>
+    </div>
+
+    <script>
+        function loadRecent() {
+            let list = JSON.parse(localStorage.getItem("recent")) || [];
+            let ul = document.getElementById("recentList");
+
+            if (list.length === 0) {
+                ul.innerHTML = "<p>No recent searches</p>";
+                return;
+            }
+
+            ul.innerHTML = "";
+            list.forEach(word => {
+                let li = document.createElement("li");
+                li.innerHTML = word;
+                ul.appendChild(li);
+            });
+        }
+
+        function clearRecent() {
+            localStorage.removeItem("recent");
+            loadRecent();
+        }
+
+        loadRecent();
+    </script>
+
+</body>
+</html>
