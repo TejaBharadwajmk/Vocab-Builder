@@ -2,36 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Paragraph Generator</title>
+    <title>VOCAB BUILDER | Paragraph Generator</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-
 <body>
+<header class="navbar">
+    <div class="nav-logo">VOCAB BUILDER</div>
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="word-of-day.html">Word of the Day</a>
+        <a href="recent-searches.html">Recent Searches</a>
+        <a href="paragraph.html">Paragraph Generator</a>
+    </nav>
+</header>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="word-of-day.html">Word of the Day</a>
-    <a href="recent-searches.html">Recent Searches</a>
-    <a href="paragraph.html">Paragraph Generator</a>
-</nav>
+<main class="main">
+    <div class="app-shell">
+        <section class="page-header">
+            <h1 class="page-title">Paragraph Generator</h1>
+            <p class="page-subtitle">
+                Enter your keywords or topic and let VOCAB BUILDER help you create a clean,
+                fluent paragraph using better vocabulary.
+            </p>
+        </section>
 
-<div class="container">
-    <h1 class="title"> Paragraph Generator </h1>
+        <section class="card">
+            <div class="form-grid">
+                <div>
+                    <div class="form-group">
+                        <label for="keywords" class="form-label">Keywords / Topic</label>
+                        <textarea id="keywords" placeholder="ex: environment, sustainability, youth responsibility"></textarea>
+                    </div>
 
-    <div class="input-box">
-        <input type="text" id="keywords" placeholder="Enter 3–5 words">
-        <button onclick="generateParagraph()">Generate</button>
+                    <div class="form-group">
+                        <label for="tone" class="form-label">Tone</label>
+                        <select id="tone">
+                            <option value="neutral" selected>Neutral / Academic</option>
+                            <option value="simple">Simple & easy</option>
+                            <option value="formal">Formal</option>
+                            <option value="creative">Creative</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="length" class="form-label">Length</label>
+                        <select id="length">
+                            <option value="short">Short (3–4 sentences)</option>
+                            <option value="medium" selected>Medium (6–8 sentences)</option>
+                            <option value="long">Long (10+ sentences)</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-row">
+                        <button id="generate-btn" class="btn-primary"
+                                onclick="generateParagraph && generateParagraph()">
+                            Generate Paragraph
+                        </button>
+                        <button class="btn-ghost"
+                                onclick="copyParagraph && copyParagraph()">
+                            Copy text
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-label" style="margin-bottom: 0.35rem;">Generated paragraph</div>
+                    <div id="paragraph-output" class="output-box">
+                        Your paragraph will appear here. Make sure your internet connection is active
+                        if this uses an online API.
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
+</main>
 
-    <div id="loading" class="loading">Generating...</div>
-
-    <div id="result-box" class="result-box hidden">
-        <p id="result"></p>
-        <button class="copy-btn" onclick="copyText()">Copy</button>
-        <span id="wordCount"></span>
-    </div>
-</div>
-
-<script src="script.js"></script>
+<footer class="footer">
+    Use these paragraphs as a base – always add your own brain on top. 🙂
+</footer>
 </body>
 </html>

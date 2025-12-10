@@ -2,57 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vocab Builder</title>
+    <title>VOCAB BUILDER | Home</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-
-    <nav>
+<header class="navbar">
+    <div class="nav-logo">VOCAB BUILDER</div>
+    <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="word-of-day.html">Word of the Day</a>
         <a href="recent-searches.html">Recent Searches</a>
         <a href="paragraph.html">Paragraph Generator</a>
     </nav>
+</header>
 
-    <div class="container">
-        <h1>Vocab Builder</h1>
+<main class="main">
+    <div class="app-shell">
+        <section class="page-header">
+            <h1 class="page-title">Build smarter vocabulary, one word at a time.</h1>
+            <p class="page-subtitle">
+                Explore new words, revisit what you searched earlier, and generate context-rich paragraphs –
+                all inside VOCAB BUILDER.
+            </p>
+        </section>
 
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Enter a word...">
-            <button onclick="searchWord()">Search</button>
-        </div>
+        <section class="card-grid">
+            <article class="card">
+                <span class="tag-pill">Daily habit</span>
+                <h2 class="card-title">Word of the Day</h2>
+                <p class="card-text">
+                    Discover a fresh word with meaning, example, and pronunciation every time you visit.
+                </p>
+                <div class="btn-row">
+                    <a href="word-of-day.html" class="btn-primary">Open Word of the Day</a>
+                    <button class="btn-ghost" onclick="getWordOfTheDay && getWordOfTheDay()">
+                        Surprise me
+                    </button>
+                </div>
+            </article>
 
-        <div id="result"></div>
+            <article class="card">
+                <span class="tag-pill">Revision</span>
+                <h2 class="card-title">Recent Searches</h2>
+                <p class="card-text">
+                    Revisit the words you looked up recently and keep them fresh in your memory.
+                </p>
+                <div class="btn-row">
+                    <a href="recent-searches.html" class="btn-primary">View History</a>
+                </div>
+            </article>
+
+            <article class="card">
+                <span class="tag-pill">Writing boost</span>
+                <h2 class="card-title">Paragraph Generator</h2>
+                <p class="card-text">
+                    Enter keywords and let VOCAB BUILDER help you generate a meaningful paragraph
+                    using strong vocabulary.
+                </p>
+                <div class="btn-row">
+                    <a href="paragraph.html" class="btn-primary">Go to Generator</a>
+                </div>
+            </article>
+        </section>
     </div>
+</main>
 
-    <div class="highlights">
-        <h2>Popular Words</h2>
-        <div class="word-tags">
-            <span>Serene</span>
-            <span>Elegant</span>
-            <span>Resilient</span>
-            <span>Empathy</span>
-            <span>Virtue</span>
-            <span>Aesthetic</span>
-        </div>
-    </div>
-
-    <div class="icons">
-        <div>
-            📚 <p>Learn New Words</p>
-        </div>
-        <div>
-            🔊 <p>Hear Pronunciation</p>
-        </div>
-        <div>
-            ✍️ <p>Use Paragraph Generator</p>
-        </div>
-    </div>
-
-    <p class="quote">“A better vocabulary gives you a better life.”</p>
-
-    <!-- Load your JS here -->
-    <script src="script.js"></script>
-
+<footer class="footer">
+    VOCAB BUILDER • Made by Teja 💜
+</footer>
 </body>
 </html>

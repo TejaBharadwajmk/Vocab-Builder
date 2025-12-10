@@ -2,66 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Word of the Day</title>
+    <title>VOCAB BUILDER | Word of the Day</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-
-    <nav>
+<header class="navbar">
+    <div class="nav-logo">VOCAB BUILDER</div>
+    <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="word-of-day.html">Word of the Day</a>
         <a href="recent-searches.html">Recent Searches</a>
         <a href="paragraph.html">Paragraph Generator</a>
     </nav>
+</header>
 
-    <div class="wod-card">
+<main class="main">
+    <div class="app-shell">
+        <section class="page-header">
+            <h1 class="page-title">Word of the Day</h1>
+            <p class="page-subtitle">
+                Learn a new word with meaning, example sentence, and pronunciation hint.
+            </p>
+        </section>
 
-    <h1 class="wod-title"> Word of the Day </h1>
+        <section class="card word-card">
+            <div class="word-main">
+                <span id="wod-word" class="word-text">serendipity</span>
+                <span id="wod-pos" class="word-pos">noun</span>
+                <span id="wod-phonetic" class="word-phonetic">/ˌsɛr.ənˈdɪp.ɪ.ti/</span>
+            </div>
 
-    <h2 id="wodWord" class="wod-word"></h2>
+            <div>
+                <div class="word-section-title">Meaning</div>
+                <p id="wod-meaning" class="word-meaning">
+                    The occurrence of events by chance in a happy or beneficial way.
+                </p>
+            </div>
 
-    <p id="wodMeaning" class="wod-meaning"></p>
-    <p id="wodExample" class="wod-example"></p>
+            <div>
+                <div class="word-section-title">Example</div>
+                <p id="wod-example" class="word-example">
+                    Discovering VOCAB BUILDER during exams felt like pure serendipity.
+                </p>
+            </div>
 
-    
-</div>
+            <div class="btn-row" style="margin-top: 0.9rem;">
+                <button id="btn-wod-refresh" class="btn-primary" onclick="getWordOfTheDay && getWordOfTheDay()">
+                    New Word
+                </button>
+                <button id="btn-wod-audio" class="btn-ghost" onclick="playWordAudio && playWordAudio()">
+                    🔊 Hear Pronunciation
+                </button>
+            </div>
+        </section>
+    </div>
+</main>
 
-
-    <button id="wodBtn" onclick="loadWordOfDay()">🔄 New Word</button>
-</div>
-<script>
-async function loadWordOfDay() {
-    const randomWords = ["serene", "tenacity", "innovation", "vigilant", "elevate", "resilient", "emerge", "embrace"];
-    const word = randomWords[Math.floor(Math.random() * randomWords.length)];
-
-    let wordEl = document.getElementById("wodWord");
-    let meaningEl = document.getElementById("wodMeaning");
-    let exampleEl = document.getElementById("wodExample");
-
-    wordEl.textContent = "Loading...";
-    meaningEl.textContent = "";
-    exampleEl.textContent = "";
-
-    try {
-        let res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
-        let data = await res.json();
-
-        let meaning = data[0].meanings[0].definitions[0].definition;
-        let example = data[0].meanings[0].definitions[0].example || "No example available.";
-
-        wordEl.textContent = word;
-        meaningEl.innerHTML = `<strong>Meaning:</strong> ${meaning}`;
-        exampleEl.innerHTML = `<strong>Example:</strong> ${example}`;
-
-    } catch {
-        wordEl.textContent = "Error";
-        meaningEl.textContent = "Unable to load word";
-    }
-}
-
-loadWordOfDay();
-</script>
-
-
+<footer class="footer">
+    Keep showing up daily – small words, big impact.
+</footer>
 </body>
 </html>
