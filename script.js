@@ -170,3 +170,49 @@ function playAudio(audioUrl) {
 
     new Audio(audioUrl).play().catch(() => alert("Unable to play audio"));
 }
+// -------------------- DAILY STREAK FEATURE --------------------
+
+function updateStreak() {
+    const streakBox = document.getElementById("streak-box");
+    if (!streakBox) return;
+
+    const today = new Date().toDateString();
+
+    let lastVisit = localStorage.getItem("lastVisit");
+    let streak = parseInt(localStorage.getItem("streak")) || 0;
+
+    if (!lastVisit) {
+        // First time user opens
+        streak = 1;
+    } 
+    else {
+        const last = new Date(lastVisit).toDateString();
+
+        if (last === today) {
+            // Already visited today → do nothing
+        } 
+        else {
+            // Calculate difference in days
+            const diff = (new Date(today) - new Date(last)) / (1000 * 60 * 60 * 24);
+
+            if (diff === 1) {
+                // Visited yesterday → streak++
+                streak++;
+            } else {
+                // Missed a day → reset streak
+                streak = 1;
+            }
+        }
+    }
+
+    // Save back to localStorage
+    localStorage.setItem("streak", streak);
+    localStorage.setItem("lastVisit", today);
+
+    // Update UI
+    streakBox.textContent = `🔥 ${streak}-Day Streak`;
+}
+
+// Run streak update when page loads
+document.addEventListener("DOMContentLoaded", updateStreak);
+
