@@ -1,4 +1,10 @@
 console.log("JS Loaded!");
+const wordsByLevel = {
+    beginner: ["happy", "bright", "simple", "calm", "kind", "basic", "quick"],
+    intermediate: ["serendipity", "eloquent", "resilient", "tranquil", "vibrant", "meticulous"],
+    expert: ["obfuscate", "quintessential", "ephemeral", "anachronistic", "idiosyncratic", "magnanimous"]
+};
+
 
 /* ----------------------------------------------------------
    1) DICTIONARY SEARCH (Recent Searches Page)
@@ -49,7 +55,9 @@ async function searchWord() {
    2) WORD OF THE DAY (word-of-day.html)
 ----------------------------------------------------------- */
 
+
 async function getWordOfTheDay() {
+    const level = document.getElementById("difficulty")?.value || "intermediate";  
     const wordEl = document.getElementById("wod-word");
     const posEl = document.getElementById("wod-pos");
     const phoneticEl = document.getElementById("wod-phonetic");
@@ -57,8 +65,8 @@ async function getWordOfTheDay() {
     const exampleEl = document.getElementById("wod-example");
 
     try {
-        const randomWords = ["serendipity", "eloquent", "resilient", "tranquil", "vibrant", "meticulous", "ingenious"];
-        const word = randomWords[Math.floor(Math.random() * randomWords.length)];
+        const list = wordsByLevel[level];
+        const word = list[Math.floor(Math.random() * list.length)];
 
         const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
         const res = await fetch(url);
@@ -66,20 +74,20 @@ async function getWordOfTheDay() {
 
         const entry = data[0];
 
-        wordEl.textContent = entry.word || word;
+        wordEl.textContent = entry.word;
         posEl.textContent = entry.meanings[0].partOfSpeech || "";
         phoneticEl.textContent = entry.phonetic || "";
         meaningEl.textContent = entry.meanings[0].definitions[0].definition || "Meaning unavailable.";
         exampleEl.textContent = entry.meanings[0].definitions[0].example || "No example available.";
 
-        // Store audio URL for play button
         window.wordAudio = entry.phonetics[0]?.audio || "";
 
-    } catch (error) {
-        console.error(error);
-        meaningEl.textContent = "Unable to load Word of the Day.";
+    } catch (err) {
+        console.error(err);
+        meaningEl.textContent = "Error loading word.";
     }
 }
+
 
 function playWordAudio() {
     if (!window.wordAudio) {
@@ -98,6 +106,7 @@ function playWordAudio() {
 function generateParagraph() {
     const keywords = document.getElementById("keywords")?.value.trim();
     const output = document.getElementById("paragraph-output");
+    const level = document.getElementById("difficulty")?.value || "intermediate";
 
     if (!keywords) {
         alert("Please enter some keywords!");
@@ -112,17 +121,34 @@ function generateParagraph() {
         const w2 = words[1] || "growth";
         const w3 = words[2] || "purpose";
 
-        const templates = [
-            `The idea of ${w1} often connects deeply with ${w2}, shaping how we understand ${w3} in our daily lives.`,
-            `When we talk about ${w1}, it naturally leads us to think about ${w2}, helping us understand ${w3} more clearly.`,
-            `In many situations, ${w1} and ${w2} play important roles. Their connection helps us make sense of ${w3}.`
-        ];
+        let paragraph = "";
 
-        const paragraph = templates[Math.floor(Math.random() * templates.length)];
+        /* ⭐ BEGINNER — simple, easy sentences */
+        if (level === "beginner") {
+            paragraph =
+                `The topic of ${w1} is connected to ${w2}, and it helps us understand ${w3} better. ` +
+                `These ideas are simple but important in our daily life.`;
+        }
+
+        /* ⭐ INTERMEDIATE — normal vocabulary */
+        else if (level === "intermediate") {
+            paragraph =
+                `The idea of ${w1} is often linked to ${w2}, shaping how we understand ${w3} in our lives. ` +
+                `Together, these concepts help us build a clear perspective.`;
+        }
+
+        /* ⭐ EXPERT — advanced vocabulary */
+        else if (level === "expert") {
+            paragraph =
+                `The concept of ${w1} intricately intertwines with ${w2}, profoundly influencing the broader interpretation of ${w3}. ` +
+                `Such interconnected themes contribute to a more sophisticated and comprehensive understanding of the subject.`;
+        }
+
         output.textContent = paragraph;
 
     }, 500);
 }
+
 
 
 function copyParagraph() {
